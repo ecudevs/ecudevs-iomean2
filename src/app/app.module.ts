@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ProductoPageComponent } from './producto/producto-page/producto-page.component';
 import { NumeroDirective } from './common/Directives/numero.directive';
+import { UpperDirective } from './common/directives/upper.directive';
 // En nuestro modulo principal vamos a declarar todos los submodulos o librerias externas que
 // vamos a usar en nustro proyecto, asi tambien, todaas las herramientas de Angular que usamos
 // como componentes, directivas, services, etc
@@ -12,7 +13,8 @@ import { NumeroDirective } from './common/Directives/numero.directive';
   declarations: [
     AppComponent,
     ProductoPageComponent,
-    NumeroDirective
+    NumeroDirective,
+    UpperDirective
   ],
   imports: [
     BrowserModule,

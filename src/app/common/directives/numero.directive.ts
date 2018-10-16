@@ -1,9 +1,12 @@
-import { Directive, HostListener, ElementRef } from '@angular/core';
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
 
 @Directive({
   selector: '[appNumero]'
 })
 export class NumeroDirective {
+
+  // tslint:disable-next-line:no-input-rename
+  @Input('appNumero') color;
 
   // ESTA DIRECTIVA VA A CONTROLAR QUE UN INPUT SOLO ACEPTE NUMEROS
 
@@ -46,6 +49,18 @@ export class NumeroDirective {
     // event.preventDefault();
     if (next && !String(next).match(this.regex)) {
       event.preventDefault();
+    }
+  }
+
+  @HostListener('keyup', ['$event'])
+  onKeyUp(event: KeyboardEvent) {
+
+    const numero = this.el.nativeElement.value;
+
+    if (numero < 0) {
+      this.el.nativeElement.style.color = this.color || 'red';
+    } else {
+      this.el.nativeElement.style.color = null;
     }
   }
 
