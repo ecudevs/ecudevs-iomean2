@@ -1,0 +1,5 @@
+/* Con la encapsulacion de estilos vamos a evitar que esta sobreescritura se replique en otros componentes */
+/* en este caso esta sobreescritura va a funcionar solo en los estilos de este componente */
+.card {
+    min-height: 20rem;
+}
