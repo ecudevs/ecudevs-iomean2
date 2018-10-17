@@ -4,18 +4,7 @@
     <!-- funciona como un foreach -->
     <!-- Con let i = index podemos ver el numero de la iteracion -->
     <div class="col-md-4 my-3" *ngFor="let item of productos; let i = index;">
-      <div class="card">
-        <!-- Si queremos designar una propiedad de una etiqueta desde un variable de nuestro controlador -->
-        <!-- usamos [] ej [src]="item.imagen" -->
-        <img class="card-img-top" [src]="item.imagen" alt="Card image cap">
-        <div class="card-body">
-          <h5>Iteracion {{i}}</h5>
-          <h5 class="card-title">{{item.nombre}} <small>{{item.precio | currency:'EUR'}}</small> </h5>
-          <p class="card-text">Precio: {{item.cantidad}}</p>
-          <p class="card-text">Fecha: {{item.feCreacion | date: 'dd/MM/yyyy HH:mm'}}</p>
-          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-        </div>
-      </div>
+      <app-producto-card [producto]="item"></app-producto-card>
     </div>
     <!-- *ngIf recibe un valor booleano, en caso de que este sea verdadero va a mostrar el contenido en nuestro DOM -->
     <div class="col-md-4 my-3" *ngIf="!mostrar">
@@ -29,40 +18,7 @@
     <div class="col-md-4 my-3" *ngIf="mostrar">
       <div class="card">
         <div class="card-body">
-          <!-- Usamos la herramienta ngForm para nuestros formularios -->
-          <!-- (ngSubmit) es la accion a ejecutar, cuando se haga submit el formulario -->
-          <!-- Con #f="ngForm" decimos que este formulario es de tipo ngForm -->
-          <form #f="ngForm" name="formProducto" (ngSubmit)="f.form.valid && guardar(f)" novalidate>
-            <div class="form-group">
-              <!-- Con [(ngModel)]="model.nombre" #nombre="ngModel" definimos a que propiedad de nuestro modelo va a asociarse el input -->
-              <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="model.nombre" #nombre="ngModel" appUpper  placeholder="Nombre" required>
-              <!-- Vamos a mostrar mensaje de error, en caso de que en el formulario se haya hecho submit y el contenido del input 'nombre' sea invalido -->
-              <p *ngIf="f.submitted && !nombre.valid" class="text-danger">El nombre es requerido</p>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="imagen" name="imagen" [(ngModel)]="model.imagen" #imagen="ngModel" placeholder="Url de la imagen"
-                required>
-                <p *ngIf="f.submitted && !imagen.valid" class="text-danger">El nombre es requerido</p>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="precio" name="precio" [(ngModel)]="model.precio" #precio="ngModel" placeholder="Precio" [appNumero]="'blue'" required>
-              <p *ngIf="f.submitted && !precio.valid" class="text-danger">El nombre es requerido</p>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="model.cantidad" #cantidad="ngModel" placeholder="cantidad" appNumero required>
-              <p *ngIf="f.submitted && !precio.cantidad" class="text-danger">El nombre es requerido</p>
-            </div>
-            <div>
-              <!-- Boton submit comun y corriente -->
-              <button type="submit" class="btn btn-primary mx-2">
-                Guardar
-              </button>
-              <!-- Cuando precionemos en el boton cancelar cambiamos a false nuestra bandear mostrar -->
-              <button type="button" class="btn btn-light" (click)="mostrar=false">
-                Cancelar
-              </button>
-            </div>
-          </form>
+          
         </div>
       </div>
     </div>

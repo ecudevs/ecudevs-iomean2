@@ -14,8 +14,6 @@ import { ProductoService } from '../producto.service';
 })
 export class ProductoPageComponent implements OnInit, AfterViewInit {
 
-  // Iniciamos nuestro modelo de clase Producto
-  model: Producto = { nombre: '', precio: 0, cantidad: 0, feCreacion: new Date(), imagen: '' };
 
   // Para probar la nuestro *ngFor en nuestra vista, hemos creado un pequeno arreglo con 3 items
   productos: any;

@@ -1,0 +1,12 @@
+<div class="card">
+  <!-- Si queremos designar una propiedad de una etiqueta desde un variable de nuestro controlador -->
+  <!-- usamos [] ej [src]="producto.imagen" -->
+  <img class="card-img-top" [src]="producto.imagen" alt="Card image cap">
+  <div class="card-body">
+    <h5>Iteracion {{i}}</h5>
+    <h5 class="card-title">{{producto.nombre}} <small>{{producto.precio | currency:'EUR'}}</small> </h5>
+    <p class="card-text">Precio: {{producto.cantidad}}</p>
+    <p class="card-text">Fecha: {{producto.feCreacion | date: 'dd/MM/yyyy HH:mm'}}</p>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>
