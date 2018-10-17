@@ -4,6 +4,7 @@
     <!-- funciona como un foreach -->
     <!-- Con let i = index podemos ver el numero de la iteracion -->
     <div class="col-md-4 my-3" *ngFor="let item of productos; let i = index;">
+      <!-- De esta manera invocamos a nuestro componente producto-card enviandole su respectivo parametro de entrada -->
       <app-producto-card [producto]="item"></app-producto-card>
     </div>
     <!-- *ngIf recibe un valor booleano, en caso de que este sea verdadero va a mostrar el contenido en nuestro DOM -->
@@ -18,7 +19,9 @@
     <div class="col-md-4 my-3" *ngIf="mostrar">
       <div class="card">
         <div class="card-body">
-          
+          <!-- De esta manera invocamos a nuestro componente producto-form configurando las acciones que debe realizar -->
+          <!-- cuando se envien parametros de salida -->
+          <app-producto-form (guardar)="guardar($event)" (cancelar)="mostrar=false"></app-producto-form>
         </div>
       </div>
     </div>

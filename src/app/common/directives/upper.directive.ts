@@ -11,7 +11,7 @@ export class UpperDirective {
 
   @HostListener('keyup', ['$event'])
   onKeyUp(event: KeyboardEvent) {
-
+    // En cada evento de keyup vamos a hacer un uppercase al valor de nuestro input
     this.el.nativeElement.value = this.el.nativeElement.value.toUpperCase();
   }
 

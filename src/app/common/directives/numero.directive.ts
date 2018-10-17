@@ -52,14 +52,20 @@ export class NumeroDirective {
     }
   }
 
+  // Configuramos para que en el caso de que el valor de nuestro input
+  // sea un valor negativo, el color del texto se ponga de color rojo
   @HostListener('keyup', ['$event'])
   onKeyUp(event: KeyboardEvent) {
 
+    // En cada evento keyup vamos a verficar el valor del contenido
     const numero = this.el.nativeElement.value;
 
     if (numero < 0) {
+      // En caso de que sea negativo accedemos a los estilos de nuestro input
+      // y procedemos a cambiar el color
       this.el.nativeElement.style.color = this.color || 'red';
     } else {
+      // En caso de que no se cumpla la condicion, simplemente ponemos null
       this.el.nativeElement.style.color = null;
     }
   }

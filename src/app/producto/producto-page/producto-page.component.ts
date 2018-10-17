@@ -41,13 +41,13 @@ export class ProductoPageComponent implements OnInit, AfterViewInit {
   // Funcion mostrar que va a ser ejecutada desde
   // el evento (click) de nuestra vista, para hacer un push de nuestro modelo en el arreglo
   // de Productos
-  guardar(f: NgForm) {
+  guardar(producto: Producto) {
     // Con Object.assign, vamos a copiar los valores de nuestro modelo
-    this.productos.push(Object.assign({ feCreacion: new Date() }, this.model));
+    this.productos.push(producto);
     // Ocultamos nuestro formulario
     this.mostrar = false;
     // Limpiamos nuestro modelo
-    this.model = { nombre: '', precio: 0, cantidad: 0, feCreacion: new Date(), imagen: '' };
+    // this.model = { nombre: '', precio: 0, cantidad: 0, feCreacion: new Date(), imagen: '' };
   }
 
 }

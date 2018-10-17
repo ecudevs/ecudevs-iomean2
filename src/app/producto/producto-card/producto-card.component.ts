@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductoCardComponent implements OnInit {
 
+  // Definimos que producto va a llegar como un parametro de entrada
   @Input() producto;
 
   constructor() { }

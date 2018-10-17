@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ecudevs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">        
+        <a class="nav-link" [routerLink]="['/']">Productos</a>
+      </li>
+      <li class="nav-item">
+        <!-- Con routerLink vamos a configurar la ruta para nuestro elemento <a></a> -->
+        <!-- Esta ruta debe estar difinida en nuestro archivo de configuracion de rutas ./routes/app.routes.ts -->
+        <a class="nav-link" [routerLink]="['/producto/1']">Producto 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/producto/2']">Producto 2</a>
+      </li>
+    </ul>
+  </div>
+</nav>
