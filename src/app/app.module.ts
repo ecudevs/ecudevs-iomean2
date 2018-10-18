@@ -12,6 +12,7 @@ import { ProductoCardComponent } from './producto/producto-card/producto-card.co
 import { ProductoFormComponent } from './producto/producto-form/producto-form.component';
 import { HeaderComponent } from './common/components/header/header.component';
 import { DetalleComponent } from './producto/detalle/detalle.component';
+import { HttpModule } from '@angular/http';
 // En nuestro modulo principal vamos a declarar todos los submodulos o librerias externas que
 // vamos a usar en nustro proyecto, asi tambien, todaas las herramientas de Angular que usamos
 // como componentes, directivas, services, etc
@@ -29,6 +30,7 @@ import { DetalleComponent } from './producto/detalle/detalle.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     routing
   ],
   providers: [],

@@ -1,18 +1,38 @@
 import { Injectable } from '@angular/core';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
 
-  productos: any = [
-    { id: 1, nombre: 'Televisor 1', precio: 10.50, cantidad: 10, feCreacion: new Date(), imagen: 'https://picsum.photos/286/180' },
-  { id: 2, nombre: 'Televisor 2', precio: 10.50, cantidad: 10, feCreacion: new Date(), imagen: 'https://picsum.photos/286/180' },
-  { id: 3, nombre: 'Televisor 3', precio: 10.50, cantidad: 10, feCreacion: new Date(), imagen: 'https://picsum.photos/286/180' }];
+  productos: any;
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   get() {
-    return this.productos;
+    return this.http.get('/api/productos/')
+      .pipe(map((response: Response) => response.json()));
+  }
+
+  insert(producto) {
+    return this.http.post('/api/productos/', producto)
+      .pipe(map((response: Response) => response.json()));
+  }
+
+  update(producto) {
+    return this.http.put('/api/productos/', producto)
+      .pipe(map((response: Response) => response.json()));
+  }
+
+  private jwt() {
+
+    const chasker = JSON.parse(localStorage.getItem('chasker'));
+
+    if (chasker && chasker.token) {
+      const headers = new Headers({ 'x-access-token': chasker.token });
+      return new RequestOptions({ headers: headers });
+    }
   }
 }

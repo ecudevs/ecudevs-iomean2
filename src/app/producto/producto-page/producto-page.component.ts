@@ -16,7 +16,7 @@ export class ProductoPageComponent implements OnInit, AfterViewInit {
 
 
   // Para probar la nuestro *ngFor en nuestra vista, hemos creado un pequeno arreglo con 3 items
-  productos: any;
+  productos = [];
 
   // La bandera mostrar va a determinar el formulario que tenemos en la vista
   // se va a mostrar o no
@@ -25,11 +25,18 @@ export class ProductoPageComponent implements OnInit, AfterViewInit {
   constructor(private productoService: ProductoService) { }
 
   ngOnInit() {
-    this.productos = this.productoService.get();
+    this.getDatos();
   }
 
   ngAfterViewInit(): void {
     // LOGICA DESPUES DE CARGAR EL COMPONENTE
+  }
+
+  getDatos() {
+    this.productoService.get()
+      .subscribe(reponse => {
+        this.productos = reponse.data;
+      });
   }
 
   // Funcion mostrar que va a ser ejecutada desde
@@ -43,7 +50,11 @@ export class ProductoPageComponent implements OnInit, AfterViewInit {
   // de Productos
   guardar(producto: Producto) {
     // Con Object.assign, vamos a copiar los valores de nuestro modelo
-    this.productos.push(producto);
+    // this.productos.push(producto);
+    this.productoService.insert(producto)
+      .subscribe(response => {
+        this.getDatos();
+      });
     // Ocultamos nuestro formulario
     this.mostrar = false;
     // Limpiamos nuestro modelo

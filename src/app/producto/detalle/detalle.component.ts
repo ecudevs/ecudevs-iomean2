@@ -29,7 +29,7 @@ export class DetalleComponent implements OnInit {
 
   getById(id) {
     // Llamamos al metodo de nuestro service y filtramos por id y lo asignamos al modelo
-    this.model = this.productoService.get().find(x => x.id === Number(id));
+    // this.model = this.productoService.get().find(x => x.id === Number(id));
   }
 
 }
